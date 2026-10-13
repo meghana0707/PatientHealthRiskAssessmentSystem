@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Risk Prediction Result</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <p class="eyebrow">MACHINE LEARNING PROJECT</p>
+            <h1>Patient Health Risk Assessment</h1>
+            <p class="subtitle">Prediction results</p>
+        </div>
+    </header>
+
+    <main class="result-container">
+        <section class="result-card">
+            <div class="result-icon">&#10003;</div>
+
+            <h2>Assessment Result</h2>
+            <p class="result-description">
+                The model has generated a health-risk category for the submitted details.
+            </p>
+
+            <div class="risk-result risk-{{ risk | lower }}">
+                <p>Predicted Health Risk</p>
+                <h1>{{ risk }}</h1>
+            </div>
+
+            <p class="patient-age">Patient age entered: {{ age }}</p>
+
+            <a href="{{ url_for('home') }}" class="back-btn">
+                Assess Another Patient
+            </a>
+
+            <p class="disclaimer">
+                This is an educational model output, not a medical diagnosis.
+                Please consult a qualified healthcare professional for medical advice.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Patient Health Risk Assessment System | Machine Learning Project</p>
+    </footer>
+
+</body>
+</html>

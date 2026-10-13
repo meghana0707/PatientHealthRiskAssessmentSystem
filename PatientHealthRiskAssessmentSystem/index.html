@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Health Risk Assessment System</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-content">
+            <p class="eyebrow">MACHINE LEARNING PROJECT</p>
+            <h1>Patient Health Risk Assessment</h1>
+            <p class="subtitle">
+                Enter patient health details to generate a model-based risk category.
+            </p>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="form-card">
+            <div class="section-heading">
+                <h2>Patient Information</h2>
+                <p>Complete all fields below.</p>
+            </div>
+
+            {% if error %}
+                <div class="error-message">{{ error }}</div>
+            {% endif %}
+
+            <form action="{{ url_for('predict') }}" method="POST">
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="age">Age</label>
+                        <input
+                            type="number"
+                            id="age"
+                            name="age"
+                            min="1"
+                            max="120"
+                            placeholder="Enter age"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="gender">Gender</label>
+                        <select id="gender" name="gender" required>
+                            <option value="">Select gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="blood_pressure">Blood Pressure</label>
+                        <input
+                            type="number"
+                            id="blood_pressure"
+                            name="blood_pressure"
+                            min="1"
+                            step="any"
+                            placeholder="Enter blood pressure"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="glucose">Blood Glucose</label>
+                        <input
+                            type="number"
+                            id="glucose"
+                            name="glucose"
+                            min="1"
+                            step="any"
+                            placeholder="Enter blood glucose"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="bmi">BMI</label>
+                        <input
+                            type="number"
+                            id="bmi"
+                            name="bmi"
+                            min="0.1"
+                            step="0.1"
+                            placeholder="Enter BMI"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="cholesterol">Cholesterol</label>
+                        <input
+                            type="number"
+                            id="cholesterol"
+                            name="cholesterol"
+                            min="1"
+                            step="any"
+                            placeholder="Enter cholesterol"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="smoking">Smoking Status</label>
+                        <select id="smoking" name="smoking" required>
+                            <option value="">Select status</option>
+                            <option value="No">No</option>
+                            <option value="Yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="activity">Physical Activity</label>
+                        <select id="activity" name="activity" required>
+                            <option value="">Select activity</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Assess Health Risk
+                </button>
+            </form>
+        </section>
+
+        <section class="info-card">
+            <h3>About This Project</h3>
+            <p>
+                This academic project demonstrates health-risk classification
+                using a trained Random Forest machine learning model.
+            </p>
+            <p class="disclaimer">
+                The prediction is for educational demonstration only. It is not
+                a medical diagnosis or a substitute for professional healthcare.
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p>Patient Health Risk Assessment System | Machine Learning Project</p>
+    </footer>
+
+</body>
+</html>
